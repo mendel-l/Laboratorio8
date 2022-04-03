@@ -11,7 +11,6 @@ namespace Laboratorio8
     public partial class _Default : Page
     {
         static List<Jugador> juagadores = new List<Jugador>();
-        static List<Resultado> resultados = new List<Resultado>();
 
         public void Read()
         {
@@ -19,6 +18,8 @@ namespace Laboratorio8
 
             FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
             StreamReader reader = new StreamReader(stream);
+
+            juagadores.Clear();
 
             while (reader.Peek() > -1)
             {
@@ -35,19 +36,16 @@ namespace Laboratorio8
             reader.Close();
         }
 
-        private void Save()
+        private void Save(Resultado datoRes)
         {
             string fileName = Server.MapPath("~/zResultados.txt");
             
-            FileStream stream = new FileStream(fileName, FileMode.OpenOrCreate, FileAccess.Write);
+            FileStream stream = new FileStream(fileName, FileMode.Append, FileAccess.Write);
             StreamWriter writer = new StreamWriter(stream);
 
-            foreach (var datoRes in resultados)
-            {
-                var AgregartxtRes = datoRes.IdJugador + "|" + datoRes.Fecha + "|" + datoRes.Team + "|" + datoRes.Goles;
-                writer.WriteLine(AgregartxtRes);
-                
-            }
+            var AgregartxtRes = datoRes.IdJugador + "|" + datoRes.Fecha + "|" + datoRes.Team + "|" + datoRes.Goles;
+            writer.WriteLine(AgregartxtRes);   
+            
             writer.Close();
         }
 
@@ -70,10 +68,11 @@ namespace Laboratorio8
             res.Team = TextBox1.Text;
             res.Goles = Convert.ToInt32(TextBox2.Text);
 
-            resultados.Add(res);
+            Save(res);
 
-            Save();
-
+            Calendar1.SelectedDate = DateTime.Now;
+            TextBox1.Text = "";
+            TextBox2.Text = "";
         }
     }
 }
