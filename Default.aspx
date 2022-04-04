@@ -23,9 +23,18 @@
             <p>
                 <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
             </p>
+            <p>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="Es necesario ingresar un equipo" SetFocusOnError="True"></asp:RequiredFieldValidator>
+            </p>
             <p style="font-size: 20px">Goles</p>
             <p style="font-size: 14px">
                 <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            </p>
+            <p style="font-size: 14px">
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="Ingrese un valor numerico"></asp:RequiredFieldValidator>
+            </p>
+            <p style="font-size: 14px">
+                <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="TextBox2" ErrorMessage="debe ingresar un numero entre 0 y 9" MaximumValue="9" MinimumValue="0" Type="Integer"></asp:RangeValidator>
             </p>
             <p>
                 <asp:Button ID="Button1" runat="server" Text="Guardar" OnClick="Button1_Click" />

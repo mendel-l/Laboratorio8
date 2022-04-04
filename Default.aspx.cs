@@ -20,14 +20,14 @@ namespace Laboratorio8
             StreamReader reader = new StreamReader(stream);
 
             juagadores.Clear();
-
+             
             while (reader.Peek() > -1)
             {
                 var linea = reader.ReadLine();
                 var partes = linea.Split('|');
 
                 Jugador jugador = new Jugador();
-                jugador.Id = Convert.ToInt32(partes[0]);
+                jugador.IdJugador = Convert.ToInt32(partes[0]);
                 jugador.Name = partes[1];
                 jugador.Team = partes[2];
 
@@ -53,8 +53,9 @@ namespace Laboratorio8
         {
             Read();
 
-            DropDownList1.DataValueField = "Id";
-            DropDownList1.DataMember = "Name";
+            DropDownList1.DataTextField = "Name";
+            DropDownList1.DataValueField = "IdJugador";
+            //DropDownList1.DataMember = "Name";
             DropDownList1.DataSource = juagadores;
             DropDownList1.DataBind();
         }

@@ -27,7 +27,7 @@ namespace Laboratorio8
                 var partes = linea.Split('|');
 
                 Jugador jugador = new Jugador();
-                jugador.Id = Convert.ToInt32(partes[0]);
+                jugador.IdJugador = Convert.ToInt32(partes[0]);
                 jugador.Name = partes[1];
                 jugador.Team = partes[2];
 
@@ -69,7 +69,7 @@ namespace Laboratorio8
             {
                 for (int j = 0; j < juagadores.Count; j++)
                 {
-                    if  (resultados[i].IdJugador == juagadores[j].Id)
+                    if  (resultados[i].IdJugador == juagadores[j].IdJugador)
                     {
                         ReporteJuego reporte = new ReporteJuego();
                         reporte.Name = juagadores[j].Name;

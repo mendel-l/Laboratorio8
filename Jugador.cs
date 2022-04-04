@@ -7,7 +7,7 @@ namespace Laboratorio8
 {
     public class Jugador
     {
-        public int Id { get; set; }
+        public int IdJugador { get; set; }
         public string Name { get; set; }
         public string Team { get; set; }
     }
